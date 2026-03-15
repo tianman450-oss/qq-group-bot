@@ -3,6 +3,7 @@
 ![Python](https://img.shields.io/badge/Python-3.10%2B-3776AB?logo=python&logoColor=white)
 ![License](https://img.shields.io/github/license/tianman450-oss/qq-group-bot)
 ![CI](https://img.shields.io/github/actions/workflow/status/tianman450-oss/qq-group-bot/ci.yml?branch=main)
+![Release](https://img.shields.io/github/v/tag/tianman450-oss/qq-group-bot)
 
 一个基于 NoneBot2 + OneBot V11 的 QQ 群机器人，集成了大模型对话、ComfyUI 生图、图生图、识图、联网搜索、群聊总结、WakeUp 课表同步、上课提醒和群友上课状态长图。
 
@@ -117,8 +118,10 @@ docs/screenshots/              项目截图
 ## Documentation
 
 - [使用教程.md](./使用教程.md)
+- [CHANGELOG.md](./CHANGELOG.md)
 - [PRD.md](./PRD.md)
 - [architecture.md](./architecture.md)
+- [docs/deployment.md](./docs/deployment.md)
 - [开源准备清单.md](./开源准备清单.md)
 
 ## Open Source Notes
@@ -136,6 +139,11 @@ docs/screenshots/              项目截图
 - 确认 `.env`、数据库和真实密钥没有进入提交内容
 
 更多说明见 [CONTRIBUTING.md](./CONTRIBUTING.md)。
+
+## Community
+
+- [CODE_OF_CONDUCT.md](./CODE_OF_CONDUCT.md)
+- [SECURITY.md](./SECURITY.md)
 
 ## License
 
