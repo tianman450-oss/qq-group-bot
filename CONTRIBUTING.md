@@ -11,10 +11,8 @@
 ## Local Development
 
 ```powershell
-python -m venv .venv
+.\scripts\bootstrap.ps1
 .\.venv\Scripts\activate
-pip install -r requirements.txt
-Copy-Item .env.example .env
 python bot.py
 ```
 
@@ -23,8 +21,7 @@ python bot.py
 提交前至少运行：
 
 ```powershell
-python -m py_compile bot.py src/utils/study.py src/plugins/chat_plugin/__init__.py src/plugins/course_plugin/__init__.py src/plugins/draw_plugin/__init__.py src/plugins/scheduler_plugin/__init__.py
-python -X utf8 -c "import nonebot; nonebot.init(); nonebot.load_plugins('src/plugins'); print('plugins_loaded')"
+.\scripts\check.ps1
 ```
 
 ## Contribution Rules
@@ -33,7 +30,9 @@ python -X utf8 -c "import nonebot; nonebot.init(); nonebot.load_plugins('src/plu
 - 不要把本地绝对路径写进代码和文档
 - 新增命令请同步更新 `README.md` 和 `使用教程.md`
 - 如果改动配置项，请同步更新 `.env.example`
+- 如果新增或修改环境变量，请同步更新 `docs/configuration.md`
 - 如果改动了工作流路径，请同步更新相关文档
+- 如果修复了真实使用中高频问题，请同步更新 `docs/faq.md`
 
 ## Pull Request Checklist
 
@@ -41,4 +40,3 @@ python -X utf8 -c "import nonebot; nonebot.init(); nonebot.load_plugins('src/plu
 - 影响范围明确
 - 文档已同步
 - 本地已完成基础校验
-

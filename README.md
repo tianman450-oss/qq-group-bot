@@ -52,10 +52,7 @@
 ```powershell
 git clone https://github.com/tianman450-oss/qq-group-bot.git
 cd qq-group-bot
-python -m venv .venv
-.\.venv\Scripts\activate
-pip install -r requirements.txt
-Copy-Item .env.example .env
+.\scripts\bootstrap.ps1
 ```
 
 然后修改 `.env`：
@@ -69,6 +66,8 @@ Copy-Item .env.example .env
 启动：
 
 ```powershell
+.\.venv\Scripts\activate
+.\scripts\check.ps1
 python bot.py
 ```
 
@@ -118,6 +117,8 @@ docs/screenshots/              项目截图
 ## Documentation
 
 - [使用教程.md](./使用教程.md)
+- [docs/configuration.md](./docs/configuration.md)
+- [docs/faq.md](./docs/faq.md)
 - [CHANGELOG.md](./CHANGELOG.md)
 - [PRD.md](./PRD.md)
 - [architecture.md](./architecture.md)
@@ -129,6 +130,7 @@ docs/screenshots/              项目截图
 - 请不要提交 `.env`、数据库、日志和用户数据
 - Fork 后建议优先修改 `.env.example`
 - 如果替换截图，尽量保持 `docs/screenshots/` 中现有文件名不变
+- Windows 用户建议优先使用 `.\scripts\bootstrap.ps1` 和 `.\scripts\check.ps1`
 
 ## Contributing
 

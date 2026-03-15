@@ -8,6 +8,9 @@ The format loosely follows Keep a Changelog.
 
 - Repository polish for public open source release
 - Added contributor-facing project metadata and collaboration files
+- Added configuration reference and FAQ documentation
+- Added PowerShell bootstrap and validation scripts
+- Added Dependabot configuration for pip and GitHub Actions
 
 ## [0.1.0] - 2026-03-15
 
@@ -20,4 +23,3 @@ The format loosely follows Keep a Changelog.
 - WakeUp schedule import and class reminder support
 - Group course status image generation
 - Screenshots, README, contribution guide, security policy, CI workflow, and issue templates
-
