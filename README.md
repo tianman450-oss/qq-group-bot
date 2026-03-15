@@ -1,68 +1,28 @@
 # QQ Group Bot
 
-一个基于 NoneBot2 + OneBot V11 的 QQ 群机器人，集成了大模型聊天、ComfyUI 生图、图生图、识图、联网搜索、群聊总结、WakeUp 课表同步、上课提醒和群友上课状态长图。
+![Python](https://img.shields.io/badge/Python-3.10%2B-3776AB?logo=python&logoColor=white)
+![License](https://img.shields.io/github/license/tianman450-oss/qq-group-bot)
+![CI](https://img.shields.io/github/actions/workflow/status/tianman450-oss/qq-group-bot/ci.yml?branch=main)
 
-## Features
+一个基于 NoneBot2 + OneBot V11 的 QQ 群机器人，集成了大模型对话、ComfyUI 生图、图生图、识图、联网搜索、群聊总结、WakeUp 课表同步、上课提醒和群友上课状态长图。
 
-- `LLM 对话`：支持多轮上下文、角色扮演、用户长期记忆、自动识图
-- `ComfyUI 生图`：文生图、图生图、模型与 LoRA 切换、队列控制
-- `群聊增强`：联网搜索、消息总结、帮助列表
-- `课表能力`：WakeUp 口令导入、当前课程判断、上课提醒、群友上课状态图
+## Highlights
+
+- `LLM 对话`：多轮上下文、角色扮演、长期记忆、自动识图
+- `ComfyUI 生图`：文生图、图生图、模型切换、LoRA 切换、队列控制
+- `群聊增强`：联网搜索、消息总结、帮助命令
+- `课表能力`：WakeUp 口令导入、当前课程判断、上课提醒、群友上课状态长图
 - `定时推送`：新闻早报、摸鱼图订阅
 
 ## Stack
 
 - Python `3.10+`
 - NoneBot2
-- OneBot V11 adapter
+- OneBot V11
 - NapCatQQ 或 Lagrange
 - ComfyUI
 - OpenAI 兼容 API 或 Gemini API
-
-## Quick Start
-
-```powershell
-git clone <your-repo-url>
-cd <repo-name>
-python -m venv .venv
-.\.venv\Scripts\activate
-pip install -r requirements.txt
-Copy-Item .env.example .env
-```
-
-然后按你的实际环境修改 `.env`：
-
-- 配置 `LLM_API_KEY` / `LLM_BASE_URL` / `LLM_MODEL`
-- 配置 `COMFYUI_SERVER`
-- 确认工作流文件路径：
-  - `COMFYUI_WORKFLOW=workflows/text2img_default.json`
-  - `COMFYUI_IMG2IMG_WORKFLOW=workflows/img2img_no_upscale.json`
-
-启动：
-
-```powershell
-python bot.py
-```
-
-NapCat/Lagrange 的反向 WS 地址：
-
-```text
-ws://127.0.0.1:8080/onebot/v11/ws
-```
-
-## Common Commands
-
-- `@机器人 你好`
-- `/帮助`
-- `/画 提示词`
-- `/图生图 提示词 --denoise 0.65`
-- `/识图 这是什么`
-- `/搜索 关键词`
-- `/总结`
-- `/导入课表 WakeUp口令`
-- `/课表`
-- `/上课状态`
-- `/群友上什么课`
+- SQLite
 
 ## Screenshots
 
@@ -86,9 +46,64 @@ ws://127.0.0.1:8080/onebot/v11/ws
 ![帮助命令](./docs/screenshots/help-command.jpg)
 ![文生图示例](./docs/screenshots/text2img-command.jpg)
 
-## Workflows
+## Quick Start
 
-仓库内提供了两个 ComfyUI API 工作流：
+```powershell
+git clone https://github.com/tianman450-oss/qq-group-bot.git
+cd qq-group-bot
+python -m venv .venv
+.\.venv\Scripts\activate
+pip install -r requirements.txt
+Copy-Item .env.example .env
+```
+
+然后修改 `.env`：
+
+- 配置 `LLM_API_KEY` / `LLM_BASE_URL` / `LLM_MODEL`
+- 配置 `COMFYUI_SERVER`
+- 确认工作流路径：
+  - `COMFYUI_WORKFLOW=workflows/text2img_default.json`
+  - `COMFYUI_IMG2IMG_WORKFLOW=workflows/img2img_no_upscale.json`
+
+启动：
+
+```powershell
+python bot.py
+```
+
+NapCat/Lagrange 反向 WS：
+
+```text
+ws://127.0.0.1:8080/onebot/v11/ws
+```
+
+## Common Commands
+
+- `@机器人 你好`
+- `/帮助`
+- `/画 提示词`
+- `/图生图 提示词 --denoise 0.65`
+- `/识图 这是什么`
+- `/搜索 关键词`
+- `/总结`
+- `/导入课表 WakeUp口令`
+- `/课表`
+- `/上课状态`
+- `/群友上什么课`
+
+## Project Structure
+
+```text
+src/plugins/chat_plugin/       聊天、搜索、总结、识图
+src/plugins/draw_plugin/       文生图、图生图、模型与 LoRA
+src/plugins/course_plugin/     课表导入、上课提醒、群友上课状态图
+src/plugins/scheduler_plugin/  早报与摸鱼图订阅
+src/utils/                     角色扮演、课表存储等公共工具
+workflows/                     ComfyUI API 工作流
+docs/screenshots/              项目截图
+```
+
+## Included Workflows
 
 - `workflows/text2img_default.json`
 - `workflows/img2img_no_upscale.json`
@@ -108,16 +123,17 @@ ws://127.0.0.1:8080/onebot/v11/ws
 
 ## Open Source Notes
 
-- 请不要提交 `.env`、数据库、日志、用户数据
-- 如果你 fork 本项目，建议优先修改 `.env.example`
-- 如果要发布截图，建议放到 `docs/screenshots/`
+- 请不要提交 `.env`、数据库、日志和用户数据
+- Fork 后建议优先修改 `.env.example`
+- 如果替换截图，尽量保持 `docs/screenshots/` 中现有文件名不变
 
 ## Contributing
 
-欢迎提交 Issue 和 PR。提交前请至少完成：
+欢迎提交 Issue 和 PR。提交前建议至少完成：
 
 - `python -m py_compile bot.py src/utils/study.py src/plugins/chat_plugin/__init__.py src/plugins/course_plugin/__init__.py src/plugins/draw_plugin/__init__.py src/plugins/scheduler_plugin/__init__.py`
-- 确认 `.env`、数据库、真实密钥没有进入提交内容
+- `python -X utf8 -c "import nonebot; nonebot.init(); nonebot.load_plugins('src/plugins'); print('plugins_loaded')"`
+- 确认 `.env`、数据库和真实密钥没有进入提交内容
 
 更多说明见 [CONTRIBUTING.md](./CONTRIBUTING.md)。
 
