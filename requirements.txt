@@ -1,0 +1,10 @@
+nonebot2[fastapi,httpx,websockets]>=2.3.0
+nonebot-adapter-onebot>=2.4.0
+openai>=1.0.0
+httpx>=0.23.0
+websockets>=11.0.3
+Pillow>=10.0.0
+APScheduler>=3.10.4
+duckduckgo-search>=6.3.0
+pypdf>=4.3.1
+pdfplumber>=0.11.4

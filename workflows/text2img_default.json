@@ -1,0 +1,281 @@
+{
+  "1": {
+    "inputs": {
+      "ckpt_name": "chenkinNoobXLCKXL_v02.safetensors"
+    },
+    "class_type": "CheckpointLoaderSimple",
+    "_meta": {
+      "title": "Checkpoint加载器（简易）"
+    }
+  },
+  "2": {
+    "inputs": {
+      "text": "pellas \\(panix2383\\), \nboo tao \\(genshin impact\\), hu tao \\(genshin impact\\), red \\(among us\\), 1girl, brown hair, claw pose, cosplay, flower-shaped pupils, green nails, hood, hooded jacket, jacket, long hair, long sleeves, looking at another, multicolored nails, nail polish, open mouth, red \\(among us\\) \\(cosplay\\), red eyes, red jacket, scared, symbol-shaped pupils, teeth, tongue, upper body, upper teeth only, v-shaped eyebrows, yellow nails",
+      "token_normalization": "none",
+      "weight_interpretation": "comfy",
+      "clip": [
+        "1",
+        1
+      ]
+    },
+    "class_type": "BNK_CLIPTextEncodeAdvanced",
+    "_meta": {
+      "title": "CLIP Text Encode (Advanced)"
+    }
+  },
+  "3": {
+    "inputs": {
+      "text": "lowres, bad anatomy, bad hands, missing fingers, extra digits, cropped, worst quality, low quality, jpeg artifacts, signature, watermark, username, blurry",
+      "token_normalization": "none",
+      "weight_interpretation": "A1111",
+      "clip": [
+        "1",
+        1
+      ]
+    },
+    "class_type": "BNK_CLIPTextEncodeAdvanced",
+    "_meta": {
+      "title": "CLIP Text Encode (Advanced)"
+    }
+  },
+  "5": {
+    "inputs": {
+      "lora_str": "",
+      "temp_lora_str": "[{\"name\":\"All_inone_Amphoreus_V3.6\",\"weight\":1,\"text_encoder_weight\":1,\"hidden\":true,\"display_name\":\"All_inone_Amphoreus_V3.6.safetensors\",\"lora\":\"All_inone_Amphoreus_V3.6.safetensors\",\"loraWorks\":\"\"},{\"name\":\"Arknights-muelsyse(mumu)ミュルジス(ミュー)\",\"weight\":1,\"text_encoder_weight\":1,\"hidden\":true,\"display_name\":\"Arknights-muelsyse(mumu)ミュルジス(ミュー).safetensors\",\"lora\":\"Arknights-muelsyse(mumu)ミュルジス(ミュー).safetensors\",\"loraWorks\":\"\"}]",
+      "打开Lora堆": "",
+      "model": [
+        "1",
+        0
+      ]
+    },
+    "class_type": "WeiLinPromptUIOnlyLoraStack",
+    "_meta": {
+      "title": "WeiLin Lora堆"
+    }
+  },
+  "12": {
+    "inputs": {
+      "samples": [
+        "36",
+        0
+      ],
+      "vae": [
+        "1",
+        2
+      ]
+    },
+    "class_type": "VAEDecode",
+    "_meta": {
+      "title": "VAE解码"
+    }
+  },
+  "13": {
+    "inputs": {
+      "upscale_method": "nearest-exact",
+      "scale_by": 0.25,
+      "image": [
+        "16",
+        0
+      ]
+    },
+    "class_type": "ImageScaleBy",
+    "_meta": {
+      "title": "缩放图像（比例）"
+    }
+  },
+  "15": {
+    "inputs": {
+      "model_name": "RealESRGAN_x4plus_anime_6B.pth"
+    },
+    "class_type": "UpscaleModelLoader",
+    "_meta": {
+      "title": "加载放大模型"
+    }
+  },
+  "16": {
+    "inputs": {
+      "upscale_model": [
+        "15",
+        0
+      ],
+      "image": [
+        "12",
+        0
+      ]
+    },
+    "class_type": "ImageUpscaleWithModel",
+    "_meta": {
+      "title": "使用模型放大图像"
+    }
+  },
+  "17": {
+    "inputs": {
+      "pixels": [
+        "13",
+        0
+      ],
+      "vae": [
+        "1",
+        2
+      ]
+    },
+    "class_type": "VAEEncode",
+    "_meta": {
+      "title": "VAE编码"
+    }
+  },
+  "18": {
+    "inputs": {
+      "seed": 799172758164762,
+      "steps": 20,
+      "cfg": 5,
+      "sampler_name": "euler_ancestral",
+      "scheduler": "simple",
+      "denoise": 0.4,
+      "model": [
+        "1",
+        0
+      ],
+      "positive": [
+        "2",
+        0
+      ],
+      "negative": [
+        "3",
+        0
+      ],
+      "latent_image": [
+        "17",
+        0
+      ]
+    },
+    "class_type": "KSampler",
+    "_meta": {
+      "title": "K采样器"
+    }
+  },
+  "19": {
+    "inputs": {
+      "samples": [
+        "18",
+        0
+      ],
+      "vae": [
+        "1",
+        2
+      ]
+    },
+    "class_type": "VAEDecode",
+    "_meta": {
+      "title": "VAE解码"
+    }
+  },
+  "31": {
+    "inputs": {
+      "文本": "1girl,solo,\n\n﻿atri-my dear moments-, atri,\n\n﻿sailor dress,white dress,head_wreath,\n\nsmile,closed eyes,closed mouth,looking down,facing viewer,\n\nholding white flower,holding blue flower,anemone_(flower),holding,sunflower, holding sunflower,\n\nwhite border,\n\nwhite flower,blue flower,red flower,purple flower,flower_field,field,sunlight, light rays,butterfly,wind,floating_hair,falling petals, 3::colorful::,-1::,sky, ::,dappled_sunlight,blurry foreground,foreground,caustics,chromatic aberration,film grain,-1::yellow theme::,\n\nFlowers are blown into the air by the wind,\n\n-1::dutch angle::,upper body,",
+      "权重转换": "NAI转SD（精确）",
+      "文本格式化": "下划线转空格",
+      "格式化标点符号": true,
+      "合并相同提示词": false,
+      "合并白名单": " BREAK "
+    },
+    "class_type": "ZML_TextFormatter",
+    "_meta": {
+      "title": "ZML_文本转格式"
+    }
+  },
+  "32": {
+    "inputs": {
+      "text_0": "1girl,solo,\n\n﻿atri-my dear moments-, atri,\n\n﻿sailor dress,white dress,head wreath,\n\nsmile,closed eyes,closed mouth,looking down,facing viewer,\n\nholding white flower,holding blue flower,anemone (flower),holding,sunflower, holding sunflower,\n\nwhite border,\n\nwhite flower,blue flower,red flower,purple flower,flower field,field,sunlight, light rays,butterfly,wind,floating hair,falling petals, (colorful:3),-(,sky, :1),dappled sunlight,blurry foreground,foreground,caustics,chromatic aberration,film grain,-(yellow theme:1),\n\nFlowers are blown into the air by the wind,\n\n-(dutch angle:1),upper body,",
+      "text": [
+        "31",
+        0
+      ]
+    },
+    "class_type": "ShowText|pysssss",
+    "_meta": {
+      "title": "Show Text 🐍"
+    }
+  },
+  "34": {
+    "inputs": {
+      "filename_prefix": "260227/xxx",
+      "images": [
+        "19",
+        0
+      ]
+    },
+    "class_type": "SaveImage",
+    "_meta": {
+      "title": "保存图像"
+    }
+  },
+  "35": {
+    "inputs": {
+      "multiplier": 0.7,
+      "model": [
+        "44",
+        0
+      ]
+    },
+    "class_type": "RescaleCFG",
+    "_meta": {
+      "title": "缩放CFG"
+    }
+  },
+  "36": {
+    "inputs": {
+      "seed": 814784827918860,
+      "steps": 35,
+      "cfg": 5,
+      "sampler_name": "euler_ancestral",
+      "scheduler": "sgm_uniform",
+      "denoise": 1,
+      "model": [
+        "35",
+        0
+      ],
+      "positive": [
+        "2",
+        0
+      ],
+      "negative": [
+        "3",
+        0
+      ],
+      "latent_image": [
+        "45",
+        0
+      ]
+    },
+    "class_type": "KSampler",
+    "_meta": {
+      "title": "K采样器"
+    }
+  },
+  "44": {
+    "inputs": {
+      "lora_name": "momoko-000052.safetensors",
+      "strength_model": 1,
+      "model": [
+        "1",
+        0
+      ]
+    },
+    "class_type": "LoraLoaderModelOnly",
+    "_meta": {
+      "title": "LoRA加载器（仅模型）"
+    }
+  },
+  "45": {
+    "inputs": {
+      "width": 1024,
+      "height": 1536,
+      "batch_size": 1
+    },
+    "class_type": "EmptyLatentImage",
+    "_meta": {
+      "title": "空Latent图像"
+    }
+  }
+}
